@@ -936,7 +936,8 @@ const actualTUICPort = isValidPort(PAPER_TUIC_PORT) ? PAPER_TUIC_PORT : TUIC_POR
           "listen_port": parseInt(actualTUICPort),
           "users": [
             {
-              "uuid": UUID
+              "uuid": UUID,
+              "password": UUID
             }
           ],
           "congestion_control": "bbr",
@@ -1618,7 +1619,7 @@ console.log(' 实际TUIC端口:', actualTUICPort);
 
       // TUIC端口是有效端口号时生成tuic节点
       if (isValidPort(actualTUICPort)) {
-        const tuicNode = `\ntuic://${UUID}:@${actualDomain}:${actualTUICPort}?sni=www.bing.com&congestion_control=bbr&udp_relay_mode=native&alpn=h3&allow_insecure=1#${nodeName}`;
+        const tuicNode = `\ntuic://${UUID}:${UUID}@${actualDomain}:${actualTUICPort}?sni=www.bing.com&congestion_control=bbr&udp_relay_mode=native&alpn=h3&allow_insecure=1#${nodeName}`;
         subTxt += tuicNode;
         console.log('🔗 TUIC节点:', tuicNode.trim());
       }
